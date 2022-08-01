@@ -1,0 +1,64 @@
+---
+- hosts: all
+
+  tasks:
+    - name: Install the most useful packages
+      become: yes
+      apt:
+        update_cache: yes
+        name:
+          - fish
+          - neovim
+          - tmux
+          - mc
+          - ripgrep
+        state: present
+
+    - name: Copy dotfiles
+      copy:
+        src: dotfiles/
+        dest: ~/.config/
+
+    - name: Copy the directory tree
+      copy:
+        src: tree/
+        dest: ~/
+
+- hosts: servers
+  become: yes
+
+  tasks:
+    - name: Installing the container engines
+      apt:
+        name:
+          - docker
+          - docker.io
+          - syncthing
+- hosts: desktops
+  become: yes
+
+  tasks:
+    - name: Install flatpak
+      apt:
+        name: flatpak
+
+    - name: Add flathub repo
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+    - name: Install flatpaks if necessary
+      become: no
+      community.general.flatpak:
+        name:
+          - com.brave.Browser
+          - com.visualstudio.code
+          - md.obsidian.Obsidian
+          - org.inkscape.Inkscape
+          - org.openscad.OpenSCAD
+          - com.prusa3d.PrusaSlicer
+          - org.blender.Blender
+        state: present
+        method: user
+

@@ -1,2 +1,2 @@
 # config
-My ansible playbook for setting up linux machines
+My ansible playbook for setting up debian-based machines
