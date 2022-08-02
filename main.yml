@@ -38,9 +38,11 @@
   become: yes
 
   tasks:
-    - name: Install flatpak
+    - name: Install flatpak and the terminal emulator
       apt:
-        name: flatpak
+        name:
+          - flatpak
+          - kitty
 
     - name: Add flathub repo
       community.general.flatpak_remote:
@@ -55,6 +57,7 @@
           - com.brave.Browser
           - com.visualstudio.code
           - md.obsidian.Obsidian
+          - io.github.diegoivanme.flowtime
           - org.inkscape.Inkscape
           - org.openscad.OpenSCAD
           - com.prusa3d.PrusaSlicer
