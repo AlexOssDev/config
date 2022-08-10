@@ -1,19 +1,13 @@
 # TODOs for {{date}}
-## Main focus
+## TO DO
 *Theme*: 
-*Task*: 
-### Subtasks
+*Task(s)*: 
 
----
-
-## Secondary tasks
-
-### Later
-
----
-
-## Log
-### Learned today
+## TO Learn
 *Subject*:
-*Thing*:
+*Things*:
+- list
+
+## Summary of the day {{date}}
+(Write down what you've learned here)
 
