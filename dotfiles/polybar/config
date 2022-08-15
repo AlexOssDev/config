@@ -1,0 +1,65 @@
+[colors]
+bg     = #2e3440
+fg     = #e5e9f0
+dimmed = #4c566a
+accent = #88c0d0
+
+[bar/main]
+;basic config
+fixed-center = true
+scroll-up = #bspwm.prev
+scroll-down = #bspwm.next
+wm-restack = bspwm
+dpi-x = 0
+dpi-y = 0
+
+;geometry
+bottom = false
+width = 100%
+height = 30
+radius = 0.0
+module-margin = 2
+border-size = 0
+
+;fonts
+font-0 = "JetBrains Mono:size=14;3"
+locale = en_US.UTF-8
+
+;colors
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+;modules
+enable-ipc     = true
+modules-left   = bspwm
+modules-center = date
+modules-right  = sound cpu ram
+tray-position  = right
+separator = "|"
+
+[module/bspwm]
+type = internal/bspwm
+label-focused-foreground = ${colors.accent}
+label-empty-foreground  = ${colors.dimmed}
+
+[module/date]
+type = internal/date
+date = %A %d %B
+time = %H:%M
+date-alt = %d-%m-%Y
+time-alt = %H:%M:%S
+label = %date%, %time%
+
+[module/cpu]
+type = internal/cpu
+format = CPU: <label>
+
+[module/ram]
+type = internal/memory
+format = RAM: <label>
+
+[module/sound]
+type = internal/pulseaudio
+interval = 5
+format-volume = volume at <label-volume>
+label-muted = muted

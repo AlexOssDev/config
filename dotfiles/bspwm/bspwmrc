@@ -1,0 +1,32 @@
+#! /bin/bash
+
+bspc rule -r "*"
+
+# Setting up the desktop
+sxhkd&
+picom -b
+nitrogen --restore
+xsetroot -cursor_name left_ptr
+
+bspc monitor -d www cli code blender 5 6 7 8 9 chat
+
+bspc config border_width         2
+bspc config window_gap           0
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Blender state=fullscreen
+bspc rule -a TelegramDesktop desktop='^10'
+bspc rule -a discord desktop='^10'
+
+#bspc config single_monocle true
+bspc config gapless_monocle true
+bspc config borderless_monocle true
+
+polybar main&
+
+# Autostart
+flatpak run org.telegram.desktop&
+flatpak run com.discordapp.Discord --start-minimized&
