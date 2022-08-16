@@ -37,5 +37,8 @@ return require('packer').startup(function(use)
 
     -- Search
     use 'junegunn/fzf'
+
+    -- Language support
+    use 'sirtaj/vim-openscad'
 end)
 
